@@ -18,6 +18,14 @@ VS Code左下のブランチ名を見ます。
 
 個人作業をpushする前は、左下が `main` ではないことを確認してください。
 
+スクリーンショットを追加する場合は、ここに `docs/images/vscode-branch-main.png` と `docs/images/vscode-branch-work.png` を入れると確認しやすくなります。
+
+## mainを最新にする
+
+`main` にいる状態で、Source Control から `Pull` を使います。
+
+`Sync Changes` は pull と push の両方を行うことがあります。`main` 上で `Sync Changes` が表示された場合は、押す前に講師または先輩に相談してください。
+
 ## ブランチを作る
 
 1. VS Code左下のブランチ名をクリックする
@@ -53,6 +61,8 @@ Source Control の変更ファイル一覧で、commitしたいファイルの `
 
 実習では、必要なファイルだけを選んでステージングします。
 
+スクリーンショットを追加する場合は、変更ファイル一覧と `+` ボタンが見えるようにします。
+
 ## コミットする
 
 1. Source Control のメッセージ欄に変更内容を書く
@@ -76,6 +86,12 @@ add sho introduction
 
 ## Pull Requestを作る
 
+PRを作る前に確認します。
+
+- VS Code左下のブランチ名が自分の作業ブランチ
+- Source Control に未コミットの変更が残っていない
+- GitHubに自分のブランチをpush済み
+
 1. GitHubのリポジトリページを開く
 2. `Compare & pull request` を押す
 3. base が `main` であることを確認する
@@ -85,6 +101,10 @@ add sho introduction
 7. URLを講師または先輩に共有する
 
 ## コンフリクトを解消する
+
+コンフリクトしたブランチで `main` を取り込む場合は、Command Palette から `Git: Merge Branch...` を選び、`main` を選びます。
+
+VS Codeの表示が環境によって違う場合は、この操作だけ統合ターミナルで行ってください。
 
 コンフリクトしたファイルを開くと、VS Codeにボタンが表示されます。
 
