@@ -19,13 +19,13 @@ VS Codeの場合:
 
 1. 左下のブランチ名をクリックする
 2. `Create new branch` を選ぶ
-3. `自分の名前_dev` のようなブランチ名を入力する
+3. `github-id_dev` のようなブランチ名を入力する
 4. 左下のブランチ名が新しいブランチになったことを確認する
 
 ターミナルの場合:
 
 ```bash
-git checkout -b 自分の名前_dev
+git checkout -b github-id_dev
 ```
 
 未コミットの変更は、基本的に新しいブランチへ一緒に移動します。
@@ -138,6 +138,15 @@ VS Codeの `Accept Current Change`、`Accept Incoming Change`、`Accept Both Cha
 - GitHub上で compare が自分のブランチになっている
 - base が `main` になっている
 - リポジトリへの権限がある
+
+`Compare & pull request` が表示されない場合:
+
+1. GitHubのリポジトリページで `Pull requests` タブを開く
+2. `New pull request` を押す
+3. base に `main` を選ぶ
+4. compare に自分の作業ブランチを選ぶ
+5. 差分を確認する
+6. `Create pull request` を押す
 
 わからない場合は、GitHubの画面を講師または先輩に見せてください。
 

@@ -13,8 +13,8 @@ VS Codeで `git-practice` フォルダを開きます。
 VS Code左下のブランチ名を見ます。
 
 - `main`: チーム全員の基準ブランチ
-- `自分の名前_dev`: 自分の作業ブランチ
-- `自分の名前_conflict`: コンフリクト練習用ブランチ
+- `github-id_dev`: 自分の作業ブランチ
+- `github-id_conflict`: コンフリクト練習用ブランチ
 
 個人作業をpushする前は、左下が `main` ではないことを確認してください。
 
@@ -99,6 +99,15 @@ PRを作る前に確認します。
 5. タイトルと本文を書く
 6. `Create pull request` を押す
 7. URLを講師または先輩に共有する
+
+`Compare & pull request` が表示されない場合:
+
+1. GitHubのリポジトリページで `Pull requests` タブを開く
+2. `New pull request` を押す
+3. base に `main` を選ぶ
+4. compare に自分の作業ブランチを選ぶ
+5. 差分を確認する
+6. `Create pull request` を押す
 
 ## コンフリクトを解消する
 

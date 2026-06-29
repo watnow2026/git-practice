@@ -4,6 +4,8 @@
 
 コマンドを打つ前に、VS Code 左下のブランチ名を毎回確認してください。
 
+実習前に [setup.md](setup.md) で事前準備を確認してください。
+
 ## 前半: 正しい作業フローを練習する
 
 各自が自分専用の自己紹介ファイルを追加します。別々のファイルを編集するので、基本的にコンフリクトは起きません。
@@ -55,7 +57,7 @@ VS Code左下の `main` をクリックし、`Create new branch` を選びます
 ブランチ名は次の形にします。
 
 ```text
-自分の名前_dev
+github-id_dev
 ```
 
 例:
@@ -98,7 +100,7 @@ introductions/sho.md
 
 成功した状態:
 
-- `introductions/自分の名前.md` が作成されている
+- `introductions/github-id.md` が作成されている
 - ファイルが保存されている
 
 ### Step 6: 変更状況を確認する
@@ -181,6 +183,15 @@ GitHub のリポジトリページを開きます。
 6. `Create pull request` を押す
 7. Pull RequestのURLを講師または先輩に共有する
 
+`Compare & pull request` が表示されない場合:
+
+1. GitHubのリポジトリページで `Pull requests` タブを開く
+2. `New pull request` を押す
+3. base に `main` を選ぶ
+4. compare に自分の作業ブランチを選ぶ
+5. 差分を確認する
+6. `Create pull request` を押す
+
 本文の例:
 
 ```markdown
@@ -221,7 +232,7 @@ VS Code左下の `main` をクリックし、`Create new branch` を選びます
 ブランチ名:
 
 ```text
-自分の名前_conflict
+github-id_conflict
 ```
 
 例:
@@ -325,13 +336,6 @@ git push origin sho_conflict
 
 GitHubのPull Request画面で `Conflicting files` が消えていれば完了です。
 
-## 講師・先輩がやること
+## 講師・先輩向け
 
-- 参加者をGitHubリポジトリのメンバーに追加する
-- 必要に応じて branch protection rule を設定する
-- 最初にVS Code左下のブランチ名を見ることを画面共有で説明する
-- 実習中は「今どのブランチにいるか」を何度も確認させる
-- 前半のPull Requestはレビューしてからmergeする
-- 後半は先に1人のPull Requestだけmergeして、残りの人にコンフリクトを体験してもらう
-- 危険操作が必要な場合は、誰が、なぜ、いつ行うかを明示する
-- 秘密情報をpushした場合は、履歴削除より先にキーやトークンの無効化を行う
+実習前の権限確認、branch protection、事故対応、コンフリクト練習の進行方法は [instructor-guide.md](instructor-guide.md) を見てください。
