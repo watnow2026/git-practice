@@ -18,7 +18,7 @@ VS Code左下のブランチ名を見ます。
 
 個人作業をpushする前は、左下が `main` ではないことを確認してください。
 
-スクリーンショットを追加する場合は、ここに `docs/images/vscode-branch-main.png` と `docs/images/vscode-branch-work.png` を入れると確認しやすくなります。
+この教材には、まだ実際のスクリーンショットは入っていません。画像を追加する場合は、ここに `docs/images/vscode-branch-main.png` と `docs/images/vscode-branch-work.png` を入れると確認しやすくなります。
 
 ## mainを最新にする
 
@@ -111,7 +111,9 @@ PRを作る前に確認します。
 
 ## コンフリクトを解消する
 
-コンフリクトしたブランチで `main` を取り込む場合は、Command Palette から `Git: Merge Branch...` を選び、`main` を選びます。
+コンフリクトしたブランチで `main` を取り込む場合は、先に `main` へ切り替えて `Pull` し、ローカルの `main` を最新にします。
+
+その後、自分のコンフリクト練習用ブランチへ戻り、Command Palette から `Git: Merge Branch...` を選び、`main` を選びます。
 
 VS Codeの表示が環境によって違う場合は、この操作だけ統合ターミナルで行ってください。
 
