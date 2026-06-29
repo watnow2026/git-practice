@@ -2,32 +2,36 @@
 
 このレポジトリは、サークルの新入生がチーム開発のGitフローを実際に練習するための教材です。
 
-読むよりも、手を動かして覚えることを目的にしています。
+読むだけではなく、VS Code と GitHub を使って手を動かしながら進めます。
 
 ## 今日やること
 
 1. `main` を最新にする
 2. 自分の作業ブランチを作る
 3. 自己紹介ファイルを追加する
-4. commitする
-5. 自分のブランチにpushする
-6. Pull Requestを作る
-7. レビュー後にmergeしてもらう
-8. コンフリクト解消を練習する
+4. 変更を確認する
+5. commitする
+6. 自分のブランチにpushする
+7. Pull Requestを作る
+8. レビュー後にmergeしてもらう
+9. コンフリクト解消を練習する
 
-## 絶対に守ること
+## 実習で使うファイル
 
-`main` に直接pushしないでください。
+- `introductions/自分の名前.md`
+- `practice/conflict-message.txt`
 
-NG:
+`introductions/` フォルダは最初から用意されています。VS Code の Explorer で `introductions` を右クリックして、自分の名前のファイルを作ってください。
 
-```bash
-git push origin main
-```
+## 個人作業の基本ルール
 
-チーム開発では、自分の作業ブランチにpushしてからPull Requestを作ります。
+実習中の個人作業では、`main` に直接pushしません。
 
-## 使うコマンド
+`main` はチーム全員が基準にするブランチです。通常は自分の作業ブランチにpushしてからPull Requestを作り、レビュー後に `main` へ取り込みます。
+
+VS Code 左下のブランチ名が `main` のときは、自分だけの判断でpushしないでください。
+
+## 基本の流れ
 
 ```bash
 git checkout main
@@ -37,23 +41,32 @@ git checkout -b 作業ブランチ名
 # ファイルを編集
 
 git status
-git add .
+git add 対象ファイル
 git commit -m "変更内容がわかるメッセージ"
 git push origin 作業ブランチ名
 ```
 
-コンフリクトが起きた場合:
+VS Codeで操作する場合は、左側の Source Control で変更ファイルを確認し、必要なファイルだけ `+` を押してステージングします。
 
-```bash
-git checkout コンフリクトしたブランチ名
-git merge main
+## 危険度の高い操作は自分だけで進めない
 
-# コンフリクト箇所を修正
+チーム開発では、他の人の作業や `main` ブランチに影響する操作があります。
 
-git add .
-git commit -m "modify conflict"
-git push origin コンフリクトしたブランチ名
-```
+次の操作は、リーダーや講師の指示がある時だけ行います。
 
-実習の詳しい進め方は [docs/workshop.md](docs/workshop.md) を見てください。
+- `main` へのpush
+- `git push --force`
+- `git reset --hard`
+- VS Code の `Discard Changes`
+- 共有済みブランチでの rebase
+- push後の `commit --amend`
+- リモートブランチの削除
+
+迷ったら、作業を消さずにVS Codeの画面を見せて相談してください。
+
+## 詳しい手順
+
+- 実習の進め方: [docs/workshop.md](docs/workshop.md)
+- VS Codeでの操作: [docs/vscode-guide.md](docs/vscode-guide.md)
+- 困ったとき: [docs/troubleshooting.md](docs/troubleshooting.md)
 
