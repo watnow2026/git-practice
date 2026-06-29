@@ -1,72 +1,33 @@
-# Gitチーム開発 練習レポジトリ
+# Gitチーム開発フロー実践
 
-このレポジトリは、サークルの新入生がチーム開発で使うGitの基本操作を練習するための教材です。
+このレポジトリは、サークルの新入生がチーム開発のGitフローを実際に練習するための教材です。
 
-目的は次の3つです。
+読むよりも、手を動かして覚えることを目的にしています。
 
-- `main` ブランチを直接変更しない流れを身につける
-- 作業ブランチを作って、変更をコミットして、GitHubへpushする
-- コンフリクトが起きたときに落ち着いて解消する
+## 今日やること
 
-## 最初に覚えるルール
+1. `main` を最新にする
+2. 自分の作業ブランチを作る
+3. 自己紹介ファイルを追加する
+4. commitする
+5. 自分のブランチにpushする
+6. Pull Requestを作る
+7. レビュー後にmergeしてもらう
+8. コンフリクト解消を練習する
 
-`main` ブランチに直接pushしてはいけません。
+## 絶対に守ること
 
-NG例:
+`main` に直接pushしないでください。
+
+NG:
 
 ```bash
 git push origin main
 ```
 
-理由:
+チーム開発では、自分の作業ブランチにpushしてからPull Requestを作ります。
 
-`main` はチームの大元になるブランチです。直接pushすると、レビューを受けずに大元のソースコードを変更してしまいます。
-
-チーム開発では、自分の作業ブランチにpushしてからPull Requestを作成します。
-
-## 基本の作業フロー
-
-作業を始める前は、必ず最新の `main` から作業ブランチを作ります。
-
-```bash
-git checkout main
-git pull origin main
-git checkout -b sho_dev
-```
-
-ファイルを編集したら、変更内容を確認します。
-
-```bash
-git status
-```
-
-変更したファイルをステージングします。
-
-```bash
-git add ファイル名
-```
-
-例:
-
-```bash
-git add introductions/sho.md
-```
-
-変更内容をコミットします。
-
-```bash
-git commit -m "add introduce"
-```
-
-自分の作業ブランチにpushします。
-
-```bash
-git push origin sho_dev
-```
-
-GitHub上でPull Requestを作成します。
-
-## 全体の流れ
+## 使うコマンド
 
 ```bash
 git checkout main
@@ -81,71 +42,18 @@ git commit -m "変更内容がわかるメッセージ"
 git push origin 作業ブランチ名
 ```
 
-## コンフリクトを起こしにくくする手順
-
-作業を始める前に、最新の `main` からブランチを作ることが大切です。
+コンフリクトが起きた場合:
 
 ```bash
-git checkout main
-git pull origin main
-git checkout -b sho_dev2
-
-# ファイルを編集
-
-git add ファイル名
-git commit -m "hogehoge"
-git push origin sho_dev2
-```
-
-## コンフリクトが起きた場合
-
-コンフリクトが起きたブランチに移動します。
-
-```bash
-git checkout sho_dev2
-```
-
-最新の `main` を取り込みます。
-
-```bash
+git checkout コンフリクトしたブランチ名
 git merge main
-```
 
-コンフリクトしているファイルを開くと、次のような表示があります。
+# コンフリクト箇所を修正
 
-```text
-<<<<<<< HEAD
-自分のブランチの変更内容
-=======
-mainブランチ側の変更内容
->>>>>>> main
-```
-
-残したい内容を選び、次の記号を削除します。
-
-```text
-<<<<<<< HEAD
-=======
->>>>>>> main
-```
-
-修正後、ステージングしてコミットします。
-
-```bash
 git add .
 git commit -m "modify conflict"
-git push origin sho_dev2
+git push origin コンフリクトしたブランチ名
 ```
 
-GitHubのPull Request画面を確認し、`Conflicting files` の表示が消えていればコンフリクト解消完了です。
-
-## この教材でやること
-
-1. `introductions/` に自分の自己紹介ファイルを作る
-2. `app/views/users/index.html.erb` を編集する
-3. 作業ブランチにpushする
-4. Pull Requestを作成する
-5. 必要に応じてコンフリクト解消を練習する
-
-詳しい実習手順は [docs/workshop.md](docs/workshop.md) を読んでください。
+実習の詳しい進め方は [docs/workshop.md](docs/workshop.md) を見てください。
 

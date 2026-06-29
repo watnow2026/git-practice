@@ -1,31 +1,37 @@
-# 実習手順
+# 実習進行表
 
-このページでは、実際に手を動かしてGitの基本操作を練習します。
+参加者全員を同じチームのメンバーに見立てて進めます。
 
-## 事前準備
+## 前半: 正しい作業フローを練習する
 
-GitHub上でこのレポジトリを自分のPCにcloneしてください。
+各自が自分専用の自己紹介ファイルを追加します。別々のファイルを編集するので、基本的にコンフリクトは起きません。
+
+### Step 1: cloneする
 
 ```bash
-git clone リポジトリURL
+git clone https://github.com/watnow2026/git-practice.git
 cd git-practice
 ```
 
-## 実習1: 作業ブランチを作る
+すでにclone済みの場合は、cloneし直さずにそのフォルダへ移動してください。
 
-まず `main` に移動します。
+```bash
+cd git-practice
+```
+
+### Step 2: mainに移動する
 
 ```bash
 git checkout main
 ```
 
-リモートの最新状態を取り込みます。
+### Step 3: mainを最新にする
 
 ```bash
 git pull origin main
 ```
 
-自分の作業ブランチを作ります。
+### Step 4: 自分の作業ブランチを作る
 
 ```bash
 git checkout -b 自分の名前_dev
@@ -37,9 +43,9 @@ git checkout -b 自分の名前_dev
 git checkout -b sho_dev
 ```
 
-## 実習2: 自己紹介ファイルを追加する
+### Step 5: 自己紹介ファイルを追加する
 
-`introductions/` の中に、自分の名前のMarkdownファイルを作ります。
+`introductions/` の中に、自分の名前のファイルを作ります。
 
 例:
 
@@ -47,7 +53,7 @@ git checkout -b sho_dev
 introductions/sho.md
 ```
 
-内容は次のように書いてください。
+内容:
 
 ```markdown
 # sho
@@ -57,60 +63,39 @@ introductions/sho.md
 - 一言:
 ```
 
-## 実習3: 画面ファイルを編集する
-
-`app/views/users/index.html.erb` を開き、自分の名前を1行追加してください。
-
-例:
-
-```erb
-<li>sho</li>
-```
-
-## 実習4: 変更を確認する
+### Step 6: 変更状況を確認する
 
 ```bash
 git status
 ```
 
-どのファイルが変更されたかを確認します。
+自分が追加したファイルが表示されていることを確認します。
 
-## 実習5: ステージングする
+### Step 7: ステージングする
+
+```bash
+git add introductions/自分の名前.md
+```
+
+例:
 
 ```bash
 git add introductions/sho.md
-git add app/views/users/index.html.erb
 ```
 
-まとめてステージングする場合は次のコマンドでも大丈夫です。
+### Step 8: コミットする
 
 ```bash
-git add .
+git commit -m "add 自分の名前 introduction"
 ```
 
-## 実習6: コミットする
-
-```bash
-git commit -m "add sho introduction"
-```
-
-コミットメッセージは、何を変更したかわかる内容にします。
-
-よい例:
+例:
 
 ```bash
 git commit -m "add sho introduction"
-git commit -m "update user list"
 ```
 
-避けたい例:
-
-```bash
-git commit -m "fix"
-git commit -m "aaa"
-```
-
-## 実習7: pushする
+### Step 9: 自分のブランチにpushする
 
 ```bash
 git push origin 自分の名前_dev
@@ -122,53 +107,121 @@ git push origin 自分の名前_dev
 git push origin sho_dev
 ```
 
-`main` にpushしてはいけません。
+`main` にはpushしません。
 
 ```bash
 git push origin main
 ```
 
-## 実習8: Pull Requestを作る
+### Step 10: Pull Requestを作る
 
-GitHubでPull Requestを作成します。
+GitHubでPull Requestを作ります。
 
 - base: `main`
 - compare: 自分の作業ブランチ
 
-Pull Requestには、何を変更したかを書いてください。
-
-例:
+Pull Requestには、変更内容を書きます。
 
 ```markdown
 ## やったこと
 
 - 自己紹介ファイルを追加しました
-- ユーザー一覧に名前を追加しました
 ```
 
-## コンフリクト練習
+Pull Requestを作ったら、講師または先輩にレビューしてもらいます。レビュー後、問題なければmergeしてもらいます。
 
-複数人が同じ行を編集すると、コンフリクトが起きることがあります。
+## 後半: コンフリクト解消を練習する
 
-コンフリクトが起きたら、次の流れで解消します。
+全員または数名で、同じファイルの同じ行を編集します。
+
+使うファイル:
+
+```text
+practice/conflict-message.txt
+```
+
+### Step 1: mainを最新にする
 
 ```bash
-git checkout コンフリクトしたブランチ名
 git checkout main
 git pull origin main
-git checkout コンフリクトしたブランチ名
+```
+
+### Step 2: コンフリクト練習用ブランチを作る
+
+```bash
+git checkout -b 自分の名前_conflict
+```
+
+例:
+
+```bash
+git checkout -b sho_conflict
+```
+
+### Step 3: 同じ行を書き換える
+
+`practice/conflict-message.txt` の1行目を、自分の好きな内容に書き換えます。
+
+### Step 4: commitしてpushする
+
+```bash
+git status
+git add practice/conflict-message.txt
+git commit -m "update conflict message"
+git push origin 自分の名前_conflict
+```
+
+### Step 5: Pull Requestを作る
+
+GitHubでPull Requestを作ります。
+
+先に1人のPull Requestをmergeします。残りの人のPull Requestでは、コンフリクトが起きます。
+
+### Step 6: コンフリクトしたブランチでmainを取り込む
+
+```bash
+git checkout 自分の名前_conflict
+git checkout main
+git pull origin main
+git checkout 自分の名前_conflict
 git merge main
 ```
 
-コンフリクトしたファイルを開き、残したい内容を選びます。
+### Step 7: コンフリクト箇所を修正する
 
-修正できたら次のコマンドを実行します。
+ファイルを開くと、次のような表示があります。
+
+```text
+<<<<<<< HEAD
+自分のブランチの変更内容
+=======
+mainブランチ側の変更内容
+>>>>>>> main
+```
+
+残したい内容を選び、次の記号を削除します。
+
+```text
+<<<<<<< HEAD
+=======
+>>>>>>> main
+```
+
+### Step 8: 解消内容をcommitしてpushする
 
 ```bash
 git add .
 git commit -m "modify conflict"
-git push origin コンフリクトしたブランチ名
+git push origin 自分の名前_conflict
 ```
 
-Pull Request画面で `Conflicting files` が消えたら完了です。
+GitHubのPull Request画面で `Conflicting files` が消えていれば完了です。
+
+## 講師・先輩がやること
+
+- 参加者をGitHubリポジトリのメンバーに追加する
+- `main` への直接pushは禁止だと最初に伝える
+- 前半のPull Requestはレビューしてからmergeする
+- 後半は先に1人のPull Requestだけmergeして、残りの人にコンフリクトを体験してもらう
 
